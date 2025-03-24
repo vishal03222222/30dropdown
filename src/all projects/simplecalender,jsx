@@ -1,0 +1,82 @@
+import React, { Component } from 'react';
+
+class SimpleCalendar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      date: '',
+      day: '',
+      year: '',
+      month: '',
+    };
+  }
+
+  componentDidMount() {
+    this.updateTime();
+    this.interval = setInterval(this.updateTime, 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
+  updateTime = () => {
+    const currentTime = new Date();
+    const days = ["", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"];
+    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+    this.setState({
+      date: currentTime.getDate(),
+      day: days[currentTime.getDay()],
+      year: currentTime.getFullYear(),
+      month: months[currentTime.getMonth()],
+    });
+  };
+
+  render() {
+    const styles = {
+      container: {
+        marginLeft: '450px',
+        marginTop: '150px',
+        display: 'flex',
+        border: '2px solid black',
+      },
+      c2: {
+        backgroundColor: 'black',
+        color: 'white',
+        padding: '10px',
+        textAlign: 'center',
+      },
+      c3: {
+        backgroundColor: 'white',
+        color: 'black',
+        padding: '10px',
+        textAlign: 'center',
+      },
+      title: {
+        color: 'rgb(0, 76, 255)',
+        textAlign: 'center',
+      },
+    };
+
+    return (
+      <div>
+        <u style={{ color: 'red' }}>
+          <h1 id="title" style={styles.title}>23. Simple Calendar</h1>
+        </u>
+        <div id="c1" style={styles.container}>
+          <div id="c2" style={styles.c2}>
+            <h2 id="date">{this.state.date}</h2>
+            <h2 id="days">{this.state.day}</h2>
+          </div>
+          <div id="c3" style={styles.c3}>
+            <h2 id="year">{this.state.year}</h2>
+            <h2 id="yearname">{this.state.month}</h2>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default SimpleCalendar;
