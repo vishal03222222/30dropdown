@@ -1,0 +1,43 @@
+/* Drag and Drop Container */
+#block {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 50px;
+  }
+  
+  /* Left and Right Boxes */
+  #left, #right {
+    border: 2px dashed white;
+    padding: 10px;
+    width: 220px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Draggable Items */
+  .one {
+    width: 180px;
+    padding: 10px;
+    margin: 10px 0;
+    text-align: center;
+    font-weight: bold;
+    background: linear-gradient(90deg, #ff3b3b, #ff1c1c);
+    color: white;
+    border-radius: 5px;
+    cursor: grab;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  /* Drag Handle */
+  .one::before {
+    content: "⋮⋮";
+    cursor: grab;
+    font-size: 20px;
+    padding-right: 10px;
+  }
+  
